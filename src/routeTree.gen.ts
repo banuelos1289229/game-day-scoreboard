@@ -12,6 +12,9 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as LiveRouteImport } from './routes/live'
+import { Route as MatchesMatchIdRouteImport } from './routes/matches.$matchId'
+import { Route as MatchesRecentRouteImport } from './routes/matches.recent'
+import { Route as MatchesUpcomingRouteImport } from './routes/matches.upcoming'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -28,35 +31,81 @@ const LiveRoute = LiveRouteImport.update({
   path: '/live',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MatchesMatchIdRoute = MatchesMatchIdRouteImport.update({
+  id: '/matches/$matchId',
+  path: '/matches/$matchId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MatchesRecentRoute = MatchesRecentRouteImport.update({
+  id: '/matches/recent',
+  path: '/matches/recent',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MatchesUpcomingRoute = MatchesUpcomingRouteImport.update({
+  id: '/matches/upcoming',
+  path: '/matches/upcoming',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/live': typeof LiveRoute
+  '/matches/$matchId': typeof MatchesMatchIdRoute
+  '/matches/recent': typeof MatchesRecentRoute
+  '/matches/upcoming': typeof MatchesUpcomingRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/live': typeof LiveRoute
+  '/matches/$matchId': typeof MatchesMatchIdRoute
+  '/matches/recent': typeof MatchesRecentRoute
+  '/matches/upcoming': typeof MatchesUpcomingRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/live': typeof LiveRoute
+  '/matches/$matchId': typeof MatchesMatchIdRoute
+  '/matches/recent': typeof MatchesRecentRoute
+  '/matches/upcoming': typeof MatchesUpcomingRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/live'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/live'
+    | '/matches/$matchId'
+    | '/matches/recent'
+    | '/matches/upcoming'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/live'
-  id: '__root__' | '/' | '/auth' | '/live'
+  to:
+    | '/'
+    | '/auth'
+    | '/live'
+    | '/matches/$matchId'
+    | '/matches/recent'
+    | '/matches/upcoming'
+  id:
+    | '__root__'
+    | '/'
+    | '/auth'
+    | '/live'
+    | '/matches/$matchId'
+    | '/matches/recent'
+    | '/matches/upcoming'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthRoute: typeof AuthRoute
   LiveRoute: typeof LiveRoute
+  MatchesMatchIdRoute: typeof MatchesMatchIdRoute
+  MatchesRecentRoute: typeof MatchesRecentRoute
+  MatchesUpcomingRoute: typeof MatchesUpcomingRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -82,6 +131,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LiveRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/matches/$matchId': {
+      id: '/matches/$matchId'
+      path: '/matches/$matchId'
+      fullPath: '/matches/$matchId'
+      preLoaderRoute: typeof MatchesMatchIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/matches/recent': {
+      id: '/matches/recent'
+      path: '/matches/recent'
+      fullPath: '/matches/recent'
+      preLoaderRoute: typeof MatchesRecentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/matches/upcoming': {
+      id: '/matches/upcoming'
+      path: '/matches/upcoming'
+      fullPath: '/matches/upcoming'
+      preLoaderRoute: typeof MatchesUpcomingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -89,6 +159,9 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthRoute: AuthRoute,
   LiveRoute: LiveRoute,
+  MatchesMatchIdRoute: MatchesMatchIdRoute,
+  MatchesRecentRoute: MatchesRecentRoute,
+  MatchesUpcomingRoute: MatchesUpcomingRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
