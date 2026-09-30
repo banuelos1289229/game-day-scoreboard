@@ -230,7 +230,7 @@ export function getMockStore(): MockStore {
     const ids = seed.teams.map(([id]) => id);
     const firstLeg = roundRobin(ids);
     const secondLeg = firstLeg.map((round) =>
-      round.map(([h, a]) => [a, h] as [string, string]),
+      round.map(([h, a]): [string, string] => [a, h]),
     );
     const rounds = [...firstLeg, ...secondLeg]; // 10 rounds
 
