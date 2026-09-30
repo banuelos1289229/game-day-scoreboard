@@ -102,8 +102,8 @@ function roundRobin(ids: string[]): Array<Array<[string, string]>> {
   for (let r = 0; r < n - 1; r++) {
     const pairs: Array<[string, string]> = [];
     for (let i = 0; i < n / 2; i++) {
-      const a = list[i];
-      const b = list[n - 1 - i];
+      const a = list[i] as string;
+      const b = list[n - 1 - i] as string;
       pairs.push(r % 2 === 0 ? [a, b] : [b, a]);
     }
     rounds.push(pairs);
