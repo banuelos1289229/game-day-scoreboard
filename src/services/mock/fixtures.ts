@@ -102,8 +102,8 @@ function roundRobin(ids: string[]): Array<Array<[string, string]>> {
   for (let r = 0; r < n - 1; r++) {
     const pairs: Array<[string, string]> = [];
     for (let i = 0; i < n / 2; i++) {
-      const a = list[i];
-      const b = list[n - 1 - i];
+      const a = list[i] as string;
+      const b = list[n - 1 - i] as string;
       pairs.push(r % 2 === 0 ? [a, b] : [b, a]);
     }
     rounds.push(pairs);
@@ -230,7 +230,7 @@ export function getMockStore(): MockStore {
     const ids = seed.teams.map(([id]) => id);
     const firstLeg = roundRobin(ids);
     const secondLeg = firstLeg.map((round) =>
-      round.map(([h, a]) => [a, h] as [string, string]),
+      round.map(([h, a]): [string, string] => [a, h]),
     );
     const rounds = [...firstLeg, ...secondLeg]; // 10 rounds
 
