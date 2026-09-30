@@ -2,6 +2,8 @@
 
 This repository is organized as a frontend and backend workspace.
 
+See [docs/spec.md](docs/spec.md) for the project requirements.
+
 ## Project layout
 
 - `frontend/` contains the TanStack Start and React application. It currently uses a mock API, with backend access centralized in `frontend/src/services/`.

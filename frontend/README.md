@@ -1,11 +1,6 @@
 # Game Day Scoreboard
 
-Create a sports league scoreboard app
-
-Check the plan file that I added
-
-Centralize every backend call in one services layer, and create a mock
-implementation of it so the whole app runs without a real backend. I will later add backend myself
+See the project requirements in [../docs/spec.md](../docs/spec.md).
 
 This project was built with [Lovable](https://lovable.dev).
 
